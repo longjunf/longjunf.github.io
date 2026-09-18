@@ -32,22 +32,33 @@ function renderSplit(copyHtml, media) {
   return `<div class="entry-split">${renderCopy(copyHtml)}${renderMedia(media)}</div>`;
 }
 
+function renderHeading(item) {
+  return `<h3>${item.title}</h3><div class="entry-meta">${item.meta}</div>`;
+}
+
+function renderStack(item) {
+  return item.stack ? `<div class="stack">${item.stack.map((s) => `<span>${s}</span>`).join("")}</div>` : "";
+}
+
 function renderEntries(container, list) {
   container.innerHTML = list.map((item) => {
-    const body = item.sections
-      ? item.sections.map((s) => renderSplit(
-          `<h4 class="entry-sub">${s.title}</h4>${renderPoints(s.points)}`,
-          s.media
-        )).join("")
-      : renderSplit(renderPoints(item.points), item.media);
-    return `
-      <article class="entry">
-        <h3>${item.title}</h3>
-        <div class="entry-meta">${item.meta}</div>
-        ${body}
-        ${item.stack ? `<div class="stack">${item.stack.map((s) => `<span>${s}</span>`).join("")}</div>` : ""}
-      </article>
-    `;
+    const heading = renderHeading(item);
+    const stack = renderStack(item);
+
+    if (item.sections) {
+      const hoistHeading = Boolean(item.sections[0]?.media?.length);
+      const body = item.sections.map((s, i) => {
+        const section = `<h4 class="entry-sub">${s.title}</h4>${renderPoints(s.points)}`;
+        return renderSplit(i === 0 && hoistHeading ? `${heading}${section}` : section, s.media);
+      }).join("");
+      return `<article class="entry">${hoistHeading ? "" : heading}${body}${stack}</article>`;
+    }
+
+    if (item.media?.length) {
+      return `<article class="entry">${renderSplit(`${heading}${renderPoints(item.points)}${stack}`, item.media)}</article>`;
+    }
+
+    return `<article class="entry">${heading}${item.points ? renderPoints(item.points) : ""}${stack}</article>`;
   }).join("");
 
   container.querySelectorAll(".media-card img, .media-card video").forEach((el) => {
@@ -66,22 +77,26 @@ function renderEntries(container, list) {
 function renderLinks(links) {
   const linksEl = document.getElementById("links");
   linksEl.innerHTML = links.map((l) => {
-    if (l.type === "wechat") {
-      return `<button type="button" class="social-btn" data-copy="${l.copy}" aria-label="${l.label}" title="${l.label}：${l.copy}">${ICONS.wechat}</button>`;
-    }
-    const extra = l.href.startsWith("http") ? 'target="_blank" rel="noopener"' : "";
-    return `<a href="${l.href}" aria-label="${l.label}" title="${l.label}" ${extra}>${ICONS[l.type] || ""}</a>`;
+    const value = l.copy || String(l.href || "").replace(/^(mailto:|tel:)/, "");
+    return `<button type="button" class="social-btn" data-copy="${value}" data-kind="${l.type}" aria-label="${l.label}：${value}" title="${l.label}">${ICONS[l.type] || ""}<span class="social-text">${value}</span></button>`;
   }).join("");
 
   linksEl.querySelectorAll("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const text = btn.getAttribute("data-copy");
+      const kind = btn.getAttribute("data-kind");
       try {
         await navigator.clipboard.writeText(text);
       } catch {
-        window.prompt("微信", text);
+        window.prompt(btn.getAttribute("aria-label"), text);
       }
-      showToast(document.documentElement.lang.startsWith("zh") ? "已复制微信号" : "WeChat ID copied");
+      const zh = document.documentElement.lang.startsWith("zh");
+      const msgs = {
+        email: zh ? "已复制邮箱" : "Email copied",
+        phone: zh ? "已复制电话" : "Phone copied",
+        wechat: zh ? "已复制微信号" : "WeChat ID copied"
+      };
+      showToast(msgs[kind] || (zh ? "已复制" : "Copied"));
     });
   });
 }

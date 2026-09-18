@@ -7,9 +7,9 @@ window.CONTENT_ZH = {
     "硕：GPA 3.9/4.0  ·  Rank 1/67"
   ],
   links: [
-    { type: "email", href: "mailto:longjun_f@163.com", label: "邮箱" },
-    { type: "wechat", copy: "15856675082", label: "微信" },
-    { type: "phone", href: "tel:15856675082", label: "电话" }
+    { type: "email", copy: "longjun_f@163.com", label: "邮箱" },
+    { type: "phone", copy: "15856675082", label: "电话" },
+    { type: "wechat", copy: "15856675082", label: "微信" }
     // { type: "github", href: "https://github.com/fanglongjun", label: "GitHub" }
   ],
   bio: [
@@ -30,7 +30,7 @@ window.CONTENT_ZH = {
         ],
         stack: ["PPO", "IsaacLab", "mjlab", "MuJoCo", "ROS2", "DR", "参数辨识", "C/C++", "Python"],
         media: [
-          { type: "video", src: "media/walk-crop.mp4", poster: "media/walk-crop.jpg", caption: "真机未知路况行走" }
+          { type: "video", src: "media/walk-crop.mp4", poster: "media/walk-crop.jpg", caption: "自研等身人形行走" }
         ]
       }
     ]
@@ -49,7 +49,7 @@ window.CONTENT_ZH = {
               "集成关节限位、速度、力矩、碰撞和活动范围等约束，结合 Pinocchio 动力学计算、hpp-fcl 碰撞检测与 MuJoCo 仿真验证，形成可输出可行性诊断和结果对比的优化流程。"
             ],
             media: [
-              { type: "video", src: "media/excitation-traj.mp4", poster: "media/excitation-traj.jpg", caption: "激励轨迹实机验证" }
+              { type: "video", src: "media/excitation-traj-crop.mp4", poster: "media/excitation-traj-crop.jpg", caption: "激励轨迹实机验证" }
             ]
           },
           {
@@ -60,7 +60,7 @@ window.CONTENT_ZH = {
               "设计 history-aware tracking 路线，比较历史帧堆叠、潜变量历史编码和归一化稳定化对跟踪性能的影响；推进 future-aware policy，从 H25 历史窗口扩展到未来参考输入，并探索未来动作 chunk 生成与滚动重规划。"
             ],
             media: [
-              { type: "video", src: "media/fmp.mp4", poster: "media/fmp.jpg", caption: "Flow Matching Policy 真机部署" }
+              { type: "video", src: "media/fmp-crop-enhance.mp4", poster: "media/fmp-crop-enhance.jpg", caption: "Flow Matching Policy 真机部署" }
             ]
           }
         ],

@@ -7,9 +7,9 @@ window.CONTENT_EN = {
     "M.S.: GPA 3.9/4.0  ·  Rank 1/67"
   ],
   links: [
-    { type: "email", href: "mailto:longjun_f@163.com", label: "Email" },
-    { type: "wechat", copy: "15856675082", label: "WeChat" },
-    { type: "phone", href: "tel:15856675082", label: "Phone" }
+    { type: "email", copy: "longjun_f@163.com", label: "Email" },
+    { type: "phone", copy: "15856675082", label: "Phone" },
+    { type: "wechat", copy: "15856675082", label: "WeChat" }
     // { type: "github", href: "https://github.com/fanglongjun", label: "GitHub" }
   ],
   bio: [
@@ -30,7 +30,7 @@ window.CONTENT_EN = {
         ],
         stack: ["PPO", "IsaacLab", "mjlab", "MuJoCo", "ROS2", "DR", "SysID", "C/C++", "Python"],
         media: [
-          { type: "video", src: "media/walk-crop.mp4", poster: "media/walk-crop.jpg", caption: "Walking on unknown terrain" }
+          { type: "video", src: "media/walk-crop.mp4", poster: "media/walk-crop.jpg", caption: "Self-developed humanoid walking" }
         ]
       }
     ]
@@ -49,7 +49,7 @@ window.CONTENT_EN = {
               "Enforced joint limits, velocity, torque, collision, and workspace constraints with Pinocchio dynamics, hpp-fcl collision checking, and MuJoCo validation, producing feasibility diagnostics and comparative results."
             ],
             media: [
-              { type: "video", src: "media/excitation-traj.mp4", poster: "media/excitation-traj.jpg", caption: "Excitation trajectory on hardware" }
+              { type: "video", src: "media/excitation-traj-crop.mp4", poster: "media/excitation-traj-crop.jpg", caption: "Excitation trajectory on hardware" }
             ]
           },
           {
@@ -60,7 +60,7 @@ window.CONTENT_EN = {
               "Explored history-aware tracking (frame stacking, latent history encoding, normalization) and a future-aware policy that extends the H25 history window with future references, and explored future action-chunk generation and receding-horizon replanning."
             ],
             media: [
-              { type: "video", src: "media/fmp.mp4", poster: "media/fmp.jpg", caption: "Flow Matching Policy on G1" }
+              { type: "video", src: "media/fmp-crop-enhance.mp4", poster: "media/fmp-crop-enhance.jpg", caption: "Flow Matching Policy on G1" }
             ]
           }
         ],
