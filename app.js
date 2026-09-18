@@ -7,7 +7,8 @@ const ICONS = {
 
 function renderMedia(media) {
   if (!media || !media.length) return "";
-  return `<div class="media-rail">${media.map((m) => {
+  const cls = media.length > 1 ? "media-row" : "media-rail";
+  return `<div class="${cls}">${media.map((m) => {
     const caption = m.caption ? `<figcaption>${m.caption}</figcaption>` : "";
     if (m.type === "video") {
       return `<figure class="media-card"><video controls preload="metadata" playsinline ${m.poster ? `poster="${m.poster}"` : ""} src="${m.src}"></video>${caption}</figure>`;
@@ -46,12 +47,14 @@ function renderEntries(container, list) {
     const stack = renderStack(item);
 
     if (item.sections) {
-      const hoistHeading = Boolean(item.sections[0]?.media?.length);
-      const body = item.sections.map((s, i) => {
-        const section = `<h4 class="entry-sub">${s.title}</h4>${renderPoints(s.points)}`;
-        return renderSplit(i === 0 && hoistHeading ? `${heading}${section}` : section, s.media);
-      }).join("");
-      return `<article class="entry">${hoistHeading ? "" : heading}${body}${stack}</article>`;
+      const sectionMedia = item.sections.flatMap((s) => s.media || []);
+      const body = item.sections.map((s) =>
+        `<h4 class="entry-sub">${s.title}</h4>${renderPoints(s.points)}`
+      ).join("");
+      if (sectionMedia.length) {
+        return `<article class="entry">${renderSplit(`${heading}${body}${stack}`, sectionMedia)}</article>`;
+      }
+      return `<article class="entry">${heading}${body}${stack}</article>`;
     }
 
     if (item.media?.length) {
@@ -63,7 +66,7 @@ function renderEntries(container, list) {
 
   container.querySelectorAll(".media-card img, .media-card video").forEach((el) => {
     el.addEventListener("error", () => {
-      const rail = el.closest(".media-rail");
+      const rail = el.closest(".media-rail, .media-row");
       const split = el.closest(".entry-split");
       el.closest("figure")?.remove();
       if (rail && !rail.children.length) {
@@ -168,5 +171,5 @@ window.addEventListener("DOMContentLoaded", () => {
     avatar.classList.remove("is-hidden");
     fallback.style.display = "none";
   });
-  avatar.src = "assets/20260913-140437.jpg";
+  avatar.src = "assets/20260918-142306.jpg";
 });

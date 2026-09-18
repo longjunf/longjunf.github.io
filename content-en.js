@@ -23,10 +23,10 @@ window.CONTENT_EN = {
         title: "Robust Walking and Disturbance Rejection on Unknown / Anomalous Terrain",
         meta: "2024.09 – Present ｜ Self-developed humanoid ｜ Independently led",
         points: [
-          "Study stable walking, disturbance rejection, and sim-to-real on a self-developed humanoid, aiming to improve deployability under unknown disturbances and real system delays.",
-          "Led distributed electronics integration, joint dynamics identification, and low-level controller tuning; built standing and velocity-tracking environments in IsaacLab / mjlab, trained end-to-end gait policies with PPO, and validated across MuJoCo with ROS2 deployment.",
-          "Addressed observation delay, action lag, and multi-sensor asynchrony via delay modeling, domain randomization, and reward ablation, reducing unstable outputs in replay and pre-deployment checks.",
-          "Trained multiple standing and walking policies and closed the loop from training and replay to inference diagnostics; built a ROS2 multi-module control stack and deployed standing and walking on the real robot."
+          "<strong>[System integration]</strong> Led distributed electronics integration on a self-developed full-size humanoid, including joint dynamics identification and low-level tracking tuning; built a real-time low-level controller that receives policy commands, reports motor-driver and sensor state, and implements soft protection and fault handling so the policy layer does not talk to hardware directly.",
+          "<strong>[Deploy]</strong> Built the policy deploy program for observation assembly, inference, action dispatch, and the runtime FSM; simulation and hardware share the same communication interface, so after MuJoCo sim-to-sim alignment the real robot is deployed by swapping the interface target.",
+          "<strong>[Policy training]</strong> Built standing and velocity-tracking environments in IsaacLab / mjlab aligned with the deploy interface, and trained end-to-end gait policies with PPO; IsaacLab / mjlab for large-scale training, MuJoCo for cross-simulator replay, comparing standing and walking policies before real-robot deployment.",
+          "<strong>[Sim2real]</strong> Addressed observation delay, action lag, and multi-sensor asynchrony with delay modeling, domain randomization (DR), and reward ablation, reducing jitter and unstable motions in replay, and deployed standing and walking on the real robot."
         ],
         stack: ["PPO", "IsaacLab", "mjlab", "MuJoCo", "ROS2", "DR", "SysID", "C/C++", "Python"],
         media: [
