@@ -88,7 +88,7 @@ window.CONTENT_EN = {
           "Anhui Provincial Outstanding Graduate",
           "Heilongjiang Provincial Three-Good Student",
           "Outstanding Student Pioneer (Graduate)",
-          "Outstanding Student Leader (Graduate)",
+          "Outstanding Student Leader (Master's)",
           "Outstanding Three-Good Student (Bachelor's)"
         ]
       },
