@@ -86,10 +86,10 @@ window.CONTENT_EN = {
           "National Scholarship (Bachelor's) ×3",
           "HIT Shenzhen Special Scholarship",
           "Anhui Provincial Outstanding Graduate",
-          "Heilongjiang Outstanding Student",
+          "Heilongjiang Provincial Three-Good Student",
           "Outstanding Student Pioneer (Graduate)",
           "Outstanding Student Leader (Graduate)",
-          "Outstanding Three-Good Student (2020–2021, 2021–2022, 2022–2023)"
+          "Outstanding Three-Good Student (Bachelor's)"
         ]
       },
       {
