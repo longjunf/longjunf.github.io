@@ -87,7 +87,7 @@ window.CONTENT_EN = {
           "HIT Shenzhen Special Scholarship",
           "Anhui Provincial Outstanding Graduate",
           "Heilongjiang Provincial Three-Good Student",
-          "Outstanding Student Pioneer (Graduate)",
+          "Outstanding Student Pioneer (Master's)",
           "Outstanding Student Leader (Master's)",
           "Outstanding Three-Good Student (Bachelor's)"
         ]
