@@ -9,8 +9,8 @@ window.CONTENT_ZH = {
   links: [
     { type: "email", copy: "longjun_f@163.com", label: "邮箱" },
     { type: "phone", copy: "15856675082", label: "电话" },
-    { type: "wechat", copy: "15856675082", label: "微信" }
-    // { type: "github", href: "https://github.com/fanglongjun", label: "GitHub" }
+    { type: "wechat", copy: "15856675082", label: "微信" },
+    { type: "github", href: "https://github.com/longjunf", label: "GitHub" }
   ],
   bio: [
     '我是<a href="https://www.hitsz.edu.cn/" target="_blank" rel="noopener">哈尔滨工业大学（深圳）</a>（985）机器人与先进制造学院推免硕士，机器人方向，本科毕业于<a href="https://www.hfut.edu.cn/" target="_blank" rel="noopener">合肥工业大学</a>（211）机械工程专业。专注人形机器人运动控制与实机开发，具备硬件调试、系统集成、仿真验证到真机部署的全流程能力。',

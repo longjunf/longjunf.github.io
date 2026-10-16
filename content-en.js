@@ -9,8 +9,8 @@ window.CONTENT_EN = {
   links: [
     { type: "email", copy: "longjun_f@163.com", label: "Email" },
     { type: "phone", copy: "15856675082", label: "Phone" },
-    { type: "wechat", copy: "15856675082", label: "WeChat" }
-    // { type: "github", href: "https://github.com/fanglongjun", label: "GitHub" }
+    { type: "wechat", copy: "15856675082", label: "WeChat" },
+    { type: "github", href: "https://github.com/longjunf", label: "GitHub" }
   ],
   bio: [
     'I am a recommended MSc student at the School of Robotics and Advanced Manufacturing, <a href="https://www.hitsz.edu.cn/en/" target="_blank" rel="noopener">Harbin Institute of Technology, Shenzhen</a> (985). I completed my BEng in Mechanical Engineering at <a href="https://en.hfut.edu.cn/" target="_blank" rel="noopener">Hefei University of Technology</a> (211). I work on humanoid locomotion control and real-robot development, from hardware bring-up and system integration through simulation and deployment.',

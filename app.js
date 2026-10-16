@@ -80,8 +80,13 @@ function renderEntries(container, list) {
 function renderLinks(links) {
   const linksEl = document.getElementById("links");
   linksEl.innerHTML = links.map((l) => {
-    const value = l.copy || String(l.href || "").replace(/^(mailto:|tel:)/, "");
-    return `<button type="button" class="social-btn" data-copy="${value}" data-kind="${l.type}" aria-label="${l.label}：${value}" title="${l.label}">${ICONS[l.type] || ""}<span class="social-text">${value}</span></button>`;
+    const icon = ICONS[l.type] || "";
+    if (l.href) {
+      const text = l.text || String(l.href).replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+      return `<a class="social-btn" href="${l.href}" target="_blank" rel="noopener" aria-label="${l.label}：${text}" title="${l.label}">${icon}<span class="social-text">${text}</span></a>`;
+    }
+    const value = l.copy || "";
+    return `<button type="button" class="social-btn" data-copy="${value}" data-kind="${l.type}" aria-label="${l.label}：${value}" title="${l.label}">${icon}<span class="social-text">${value}</span></button>`;
   }).join("");
 
   linksEl.querySelectorAll("[data-copy]").forEach((btn) => {
