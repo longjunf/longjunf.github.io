@@ -3,8 +3,8 @@ window.CONTENT_EN = {
   titles: [
     "MSc (recommended), HIT Shenzhen (985) · Humanoid Robot Locomotion Control",
     "Motion Planning & Control Algorithm Intern, Galbot",
-    "B.S.: GPA 3.99/4.3  ·  Rank 1/351",
-    "M.S.: GPA 3.9/4.0  ·  Rank 1/67"
+    "B.S.: GPA 3.99/4.3  ·  Rank 1/350",
+    "M.S.: GPA 3.9/4.0  ·  Rank 1/60"
   ],
   links: [
     { type: "email", copy: "longjun_f@163.com", label: "Email" },

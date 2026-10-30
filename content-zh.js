@@ -3,8 +3,8 @@ window.CONTENT_ZH = {
   titles: [
     "哈尔滨工业大学（深圳）（985）推免硕士 · 人形机器人运动控制",
     "银河通用（Galbot）规控算法实习生",
-    "本：GPA 3.99/4.3  ·  Rank 1/351",
-    "硕：GPA 3.9/4.0  ·  Rank 1/67"
+    "本：GPA 3.99/4.3  ·  Rank 1/350",
+    "硕：GPA 3.9/4.0  ·  Rank 1/60"
   ],
   links: [
     { type: "email", copy: "longjun_f@163.com", label: "邮箱" },
