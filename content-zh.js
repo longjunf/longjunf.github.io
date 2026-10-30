@@ -14,7 +14,7 @@ window.CONTENT_ZH = {
   ],
   bio: [
     '我是<a href="https://www.hitsz.edu.cn/" target="_blank" rel="noopener">哈尔滨工业大学（深圳）</a>（985）机器人与先进制造学院推免硕士，机器人方向，本科毕业于<a href="https://www.hfut.edu.cn/" target="_blank" rel="noopener">合肥工业大学</a>（211）机械工程专业。专注人形机器人运动控制与实机开发，具备硬件调试、系统集成、仿真验证到真机部署的全流程能力。',
-    '我在自研等身人形机器人上开展未知异常路况下的稳定行走、抗扰控制与 sim-to-real 研究；同时在<a href="https://www.galbot.com/" target="_blank" rel="noopener">银河通用（Galbot）</a>从事宇树 G1 动力学参数辨识，以及 Flow Matching Policy 在人形运动跟踪上的训练与部署。意向方向：具身智能、机器人、强化学习。'
+    '我在自研等身人形机器人上开展未知异常路况下的稳定行走、抗扰控制与 sim-to-real 研究；同时在<a href="https://www.galbot.com/" target="_blank" rel="noopener">银河通用（Galbot）</a>从事宇树 G1 动力学参数辨识，以及 Flow Matching Policy 在人形运动跟踪上的训练与部署。意向方向：机器人学习、仿真到现实迁移、长时程操作。'
   ],
   projects: {
     title: "项目经历",
@@ -39,7 +39,7 @@ window.CONTENT_ZH = {
     title: "实习经历",
     list: [
       {
-        title: "银河通用机器人 · 规控算法实习生",
+        title: "银河通用（Galbot）· 运动规划与控制算法实习生",
         meta: "2026.05 – 2026.09",
         sections: [
           {
@@ -85,11 +85,11 @@ window.CONTENT_ZH = {
           "硕士研究生国家奖学金",
           "本科国家奖学金 ×3",
           "哈尔滨工业大学（深圳）特等奖学金",
-          "安徽省优秀毕业生",
-          "黑龙江省三好学生",
           "优秀学生标兵（研究生）",
           "优秀学生干部（研究生）",
-          "优秀三好学生（本科）"
+          "优秀三好学生（本科）",
+          "安徽省优秀毕业生",
+          "黑龙江省三好学生"
         ]
       },
       {

@@ -161,12 +161,12 @@ function loadLang(lang) {
 }
 
 function toggleLang() {
-  const cur = localStorage.getItem("lang") || "zh";
+  const cur = localStorage.getItem("lang") || "en";
   loadLang(cur === "zh" ? "en" : "zh");
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  loadLang(localStorage.getItem("lang") || "zh");
+  loadLang(localStorage.getItem("lang") || "en");
   document.getElementById("lang-btn").addEventListener("click", toggleLang);
 
   const avatar = document.getElementById("avatar");

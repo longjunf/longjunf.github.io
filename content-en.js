@@ -2,7 +2,7 @@ window.CONTENT_EN = {
   name: "Longjun Fang",
   titles: [
     "MSc (recommended), HIT Shenzhen (985) · Humanoid Robot Locomotion Control",
-    "Motion Planning Intern, Galbot",
+    "Motion Planning & Control Algorithm Intern, Galbot",
     "B.S.: GPA 3.99/4.3  ·  Rank 1/351",
     "M.S.: GPA 3.9/4.0  ·  Rank 1/67"
   ],
@@ -14,13 +14,13 @@ window.CONTENT_EN = {
   ],
   bio: [
     'I am a recommended MSc student at the School of Robotics and Advanced Manufacturing, <a href="https://www.hitsz.edu.cn/en/" target="_blank" rel="noopener">Harbin Institute of Technology, Shenzhen</a> (985). I completed my BEng in Mechanical Engineering at <a href="https://en.hfut.edu.cn/" target="_blank" rel="noopener">Hefei University of Technology</a> (211). I work on humanoid locomotion control and real-robot development, from hardware bring-up and system integration through simulation and deployment.',
-    'My thesis work studies robust walking, disturbance rejection, and sim-to-real on a self-developed humanoid. I also interned at <a href="https://www.galbot.com/" target="_blank" rel="noopener">Galbot</a> on Unitree G1 dynamics identification and Flow Matching policies for humanoid motion tracking. Interests: embodied AI, robotics, and reinforcement learning.'
+    'My thesis work studies robust walking, disturbance rejection, and sim-to-real on a self-developed humanoid. I also interned at <a href="https://www.galbot.com/" target="_blank" rel="noopener">Galbot</a> on Unitree G1 dynamics identification and Flow Matching policies for humanoid motion tracking. Interests: robot learning, sim-to-real transfer, and long-horizon manipulation.'
   ],
   projects: {
     title: "Projects",
     list: [
       {
-        title: "Robust Walking and Disturbance Rejection on Unknown / Anomalous Terrain",
+        title: "Robust Walking and Disturbance Rejection on Unknown and Anomalous Terrains",
         meta: "2024.09 – Present ｜ Self-developed humanoid ｜ Independently led",
         points: [
           "<strong>[System integration]</strong> Led distributed electronics integration on a self-developed full-size humanoid, including joint dynamics identification and low-level tracking tuning; built a real-time low-level controller that receives policy commands, reports motor-driver and sensor state, and implements soft protection and fault handling so the policy layer does not talk to hardware directly.",
@@ -39,7 +39,7 @@ window.CONTENT_EN = {
     title: "Internships",
     list: [
       {
-        title: "Galbot · Motion Planning Intern",
+        title: "Galbot · Motion Planning & Control Algorithm Intern",
         meta: "2026.05 – 2026.09",
         sections: [
           {
@@ -82,14 +82,14 @@ window.CONTENT_EN = {
       {
         name: "Honors",
         items: [
-          "National Scholarship (Master's)",
-          "National Scholarship (Bachelor's) ×3",
+          "National Scholarship (M.Sc.)",
+          "National Scholarship (B.Eng.) ×3",
           "HIT Shenzhen Special Scholarship",
-          "Anhui Provincial Outstanding Graduate",
-          "Heilongjiang Provincial Three-Good Student",
-          "Outstanding Student Pioneer (Master's)",
-          "Outstanding Student Leader (Master's)",
-          "Outstanding Three-Good Student (Bachelor's)"
+          "Outstanding Student Pioneer (M.Sc.)",
+          "Outstanding Student Leader (M.Sc.)",
+          "Outstanding Merit Student (B.Eng.)",
+          "Outstanding Graduate of Anhui Province",
+          "Merit Student of Heilongjiang Province"
         ]
       },
       {
