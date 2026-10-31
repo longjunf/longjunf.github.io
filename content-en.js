@@ -43,33 +43,28 @@ window.CONTENT_EN = {
         meta: "2026.05 – 2026.09",
         sections: [
           {
-            title: "Flow-matching policies for humanoid motion tracking",
+            title: "Robot dynamics identification",
             points: [
-              "Extended FPO++ (flow-matching policy gradients) to whole-body tracking on the Unitree G1 with deployable observations only — base linear velocity and anchor position removed — keeping the privileged simulation quantities in the critic only (asymmetric actor–critic).",
-              "Closed the full loop: 154-dim observation, 29-dim action, five-step Euler sampling inside the exported model, ONNX export and on-robot deployment; the deployment runner is untouched, so policy variants are compared by switching one config path.",
-              "Removed the foot–ground scraping that capped the baseline by re-modelling foot collision as multi-capsule geometry and extending training; this became the reference setting for every later run.",
-              "Ran 58 training runs across four ablations. Initialising the flow from the previous action degraded tracking and could be explained mechanically; naive history stacking diverged and only stabilised once LayerNorm isolated it as a scale problem, not a representation problem; latent history never beat a single frame; future-reference conditioning went unstable. The limit in this task is data diversity, not the policy class.",
-              "Built the tooling the ablations needed — an ablation registry with a CLI, crash diagnostics that dump rollout, scalars and weights on non-finite losses, per-clip failure and sampling-entropy metrics, three export tiers for the flow initial condition, a replay viewer — and wrote a mechanism note that maps history, future reference, action chunking and receding-horizon execution onto the literature and explains why these negative results are consistent with it."
-            ],
-            media: [
-              { type: "video", src: "media/fmp-crop-enhance.mp4", poster: "media/fmp-crop-enhance.jpg", caption: "Flow Matching Policy on G1" }
-            ]
-          },
-          {
-            title: "Dynamics identification: excitation-trajectory optimization",
-            points: [
-              "Parameterised each joint's excitation as a Fourier series sharing one base frequency, so every trajectory is strictly periodic and can be replayed on hardware to average noise out.",
-              "Made joint limits hold by construction instead of by penalty: L1-normalised harmonics, an asymmetric half-amplitude that shrinks as the trajectory centre approaches a limit, and a triangle-inequality velocity bound that rescales the coefficients before optimisation.",
-              "Projected the standard inertial parameters onto their identifiable base-parameter subspace with QR and column pivoting, then maximised D-optimal Fisher information there plus a term that lifts the weakest identifiable direction.",
-              "Split constraints into hard rejection (collision, base frequency, torque) and soft quadratic penalties (collision margin, torque headroom, range coverage, left–right mirror symmetry of information), with capsule/box collision proxies evaluated in parallel.",
-              "Closed the loop on the identified model: retrained tracking policies on it and compared Pinocchio RNEA torque against measured torque on contact-free limbs, solving foot forces by least squares to label contact."
+              "Designed excitation trajectories for Unitree G1 dynamics identification using Fourier parameterization and CMA-ES, improving identifiability via the Fisher Information Matrix (FIM).",
+              "Enforced joint limits, velocity, torque, collision, and workspace constraints with Pinocchio dynamics, hpp-fcl collision checking, and MuJoCo validation, producing feasibility diagnostics and comparative results."
             ],
             media: [
               { type: "video", src: "media/excitation-traj-crop.mp4", poster: "media/excitation-traj-crop.jpg", caption: "Excitation trajectory on hardware" }
             ]
+          },
+          {
+            title: "Flow Matching policies for humanoid control",
+            points: [
+              "Built a G1 motion-tracking pipeline with FPO++ from Isaac Lab training through ONNX export and real-robot deployment.",
+              "Ran last-action flow-source ablations on hardware: starting the flow from the previous action coupled adjacent-step errors and underperformed noise initialization; later work enriched conditioning instead of changing the flow source.",
+              "Explored history-aware tracking (frame stacking, latent history encoding, normalization) and a future-aware policy that extends the H25 history window with future references."
+            ],
+            media: [
+              { type: "video", src: "media/fmp-crop-enhance.mp4", poster: "media/fmp-crop-enhance.jpg", caption: "Flow Matching Policy on G1" }
+            ]
           }
         ],
-        stack: ["G1", "FPO++", "Flow Matching", "Isaac Lab", "MuJoCo", "ONNX", "FIM", "CMA-ES", "Pinocchio", "hpp-fcl"]
+        stack: ["G1", "FIM", "CMA-ES", "Pinocchio", "Flow Matching", "FPO++", "Isaac Lab", "ONNX", "MuJoCo"]
       }
     ]
   },
