@@ -45,7 +45,7 @@ window.CONTENT_EN = {
           {
             title: "Flow-matching policies for humanoid motion tracking",
             points: [
-              "Ported FPO++ (flow-matching policy gradients) to the Unitree G1 and trained whole-body tracking with deployable observations only — base linear velocity and anchor position removed — using an asymmetric actor–critic whose critic keeps the privileged simulation quantities.",
+              "Extended FPO++ (flow-matching policy gradients) to whole-body tracking on the Unitree G1 with deployable observations only — base linear velocity and anchor position removed — keeping the privileged simulation quantities in the critic only (asymmetric actor–critic).",
               "Closed the full loop: 154-dim observation, 29-dim action, five-step Euler sampling inside the exported model, ONNX export and on-robot deployment; the deployment runner is untouched, so policy variants are compared by switching one config path.",
               "Removed the foot–ground scraping that capped the baseline by re-modelling foot collision as multi-capsule geometry and extending training; this became the reference setting for every later run.",
               "Ran 58 training runs across four ablations. Initialising the flow from the previous action degraded tracking and could be explained mechanically; naive history stacking diverged and only stabilised once LayerNorm isolated it as a scale problem, not a representation problem; latent history never beat a single frame; future-reference conditioning went unstable. The limit in this task is data diversity, not the policy class.",
