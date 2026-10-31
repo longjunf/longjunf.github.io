@@ -43,28 +43,33 @@ window.CONTENT_ZH = {
         meta: "2026.05 – 2026.09",
         sections: [
           {
-            title: "机器人动力学参数辨识",
+            title: "Flow Matching 人形运动跟踪",
             points: [
-              "面向宇树 G1 人形机器人动力学参数辨识，设计基于傅里叶级数轨迹参数化与 CMA-ES 优化的激励轨迹生成方法，以费舍尔信息矩阵（FIM）提升参数可辨识性。",
-              "集成关节限位、速度、力矩、碰撞和活动范围等约束，结合 Pinocchio 动力学计算、hpp-fcl 碰撞检测与 MuJoCo 仿真验证，形成可输出可行性诊断和结果对比的优化流程。"
-            ],
-            media: [
-              { type: "video", src: "media/excitation-traj-crop.mp4", poster: "media/excitation-traj-crop.jpg", caption: "激励轨迹实机验证" }
-            ]
-          },
-          {
-            title: "Flow Matching Policy 在人形运动控制上的探索",
-            points: [
-              "围绕宇树 G1 motion tracking，基于 FPO++ 打通 Isaac Lab 仿真训练、ONNX 导出与真机部署。",
-              "完成 last-action flow source 消融与真机对照：将流起点从噪声改为上一帧动作会耦合相邻步误差，跟踪弱于噪声起步，后续改为增强条件信息而非改流起点。",
-              "设计 history-aware tracking 路线，比较历史帧堆叠、潜变量历史编码和归一化稳定化对跟踪性能的影响；推进 future-aware policy，从 H25 历史窗口扩展到未来参考输入，并探索未来动作 chunk 生成与滚动重规划。"
+              "把 FPO++（flow-matching 策略梯度）移植到宇树 G1，只用真机拿得到的观测训练全身跟踪（去掉基座线速度与锚点位置），critic 保留仿真特权量，构成非对称 actor–critic。",
+              "打通完整链路：154 维观测、29 维动作、导出模型内 5 步 Euler 采样，ONNX 导出与真机部署；部署端一行不改，策略变体只靠切换一个配置路径对比。",
+              "用多 capsule 脚部碰撞体加长训练，消除限制基线的脚地刮擦，该配置成为后续所有实验的参照。",
+              "完成 58 个训练 run、四组消融：把流起点改成上一帧动作会降低跟踪并可用机制解释；直接堆叠历史会发散，加 LayerNorm 后证明问题在尺度而非表示；潜变量历史始终没超过单帧；未来参考条件化会失稳。结论是当前任务的瓶颈在数据多样性，而非策略类别。",
+              "补齐消融所需的工程设施：带 CLI 的消融注册表、非有限损失时自动 dump rollout／标量／权重的崩溃诊断、逐 clip 失败率与采样熵指标、三档 flow 起点导出、回放可视化；并写了一份机制分析，把 history / future reference / action chunking / receding-horizon 逐条对到文献，解释这些负结果为何与文献并不矛盾。"
             ],
             media: [
               { type: "video", src: "media/fmp-crop-enhance.mp4", poster: "media/fmp-crop-enhance.jpg", caption: "Flow Matching Policy 真机部署" }
             ]
+          },
+          {
+            title: "动力学参数辨识：激励轨迹优化",
+            points: [
+              "把每个关节的激励写成共享同一基频的傅里叶级数，轨迹严格周期，可在真机上反复重放以叠加降噪。",
+              "让关节限位由构造保证而不是靠惩罚项：谐波系数 L1 归一化、随中心位置收缩的非对称半幅、以及三角不等式给出的速度上界（超限前先按比例缩放系数）。",
+              "用带列置换的 QR 把标准惯性参数投影到可辨识基参数子空间，再在该子空间最大化 D-optimal 费舍尔信息，并加一项抬升最弱可辨识方向。",
+              "约束分两层：碰撞／基频／力矩越界直接整条作废，碰撞余量、力矩余量、活动范围与左右镜像信息一致性用二次软惩罚，碰撞用 capsule/box 近似并并行求距离。",
+              "闭环验证辨识结果：在辨识模型上重训跟踪策略，用最小二乘解足端力判定接触，再在非接触肢段上比较 Pinocchio RNEA 力矩与实测力矩。"
+            ],
+            media: [
+              { type: "video", src: "media/excitation-traj-crop.mp4", poster: "media/excitation-traj-crop.jpg", caption: "激励轨迹实机验证" }
+            ]
           }
         ],
-        stack: ["G1", "FIM", "CMA-ES", "Pinocchio", "Flow Matching", "FPO++", "Isaac Lab", "ONNX"]
+        stack: ["G1", "FPO++", "Flow Matching", "Isaac Lab", "MuJoCo", "ONNX", "FIM", "CMA-ES", "Pinocchio", "hpp-fcl"]
       }
     ]
   },
